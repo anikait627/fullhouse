@@ -1,0 +1,111 @@
+/*!
+ * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
+ */
+ body {
+    overflow-x: hidden;
+  }
+
+#wrapper {
+    background-color: rgb(236, 236, 236);
+}
+
+.page-content-div {
+    text-align: left;
+    padding: 10px 40px 10px 40px;
+}
+  
+  #sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+    text-align: left;
+  }
+  
+  #sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
+  
+  #sidebar-wrapper .list-group {
+    width: 15rem;
+  }
+
+  #sidebar-wrapper .list-group-item {
+      border: 0px;
+      padding-top: 18px;
+      padding-bottom: 20px;
+      color: rgb(78, 78, 78);
+  }
+  
+  #page-content-wrapper {
+    min-width: 100vw;
+  }
+  
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+
+  #update-button {
+      border-radius: 50px;
+      border: 0px;
+      padding: 12px 10px 15px 10px;
+      margin: 30px;
+      margin-top: 60px;
+  }
+
+  .table-card {
+      display: inline-block;
+      border-radius: 5px;
+      border: 1px solid rgb(0,0,0,0.125);
+      background-color: white;
+      margin: 40px 0px 0px 0px;
+      padding: 0px 20px 0px 20px;
+  }
+
+  .table-card thead th {
+      border-top: 0px;
+      color: rgb(112, 112, 112);
+  }
+
+  .rec-card {
+    vertical-align: top;
+    min-height: 300px;
+    display: inline-block;
+    border-radius: 5px;
+    border: 1px solid rgb(0,0,0,0.125);
+    background-color: white;
+    margin: 40px 0px 0px 20px;
+    padding: 0px;
+  }
+
+  .rec-title {
+      background-color: rgb(248, 248, 248);
+      padding: .75rem;
+  }
+
+  .rec-card-item {
+      padding: 0.75rem;
+  }
+  
+  @media (min-width: 768px) {
+    #sidebar-wrapper {
+      margin-left: 0;
+    }
+  
+    #page-content-wrapper {
+      min-width: 0;
+      width: 100%;
+    }
+  
+    #wrapper.toggled #sidebar-wrapper {
+      margin-left: -15rem;
+    }
+  }
+  

@@ -7,11 +7,11 @@ import {
 } from 'react-router-dom';
 
 import './App.css';
-import {home} from './components/pages/home.js'
-import {login} from './components/pages/login.js'
-import {update} from './components/pages/update.js'
-import {messages} from './components/pages/messages.js'
-import {inventory} from './components/pages/inventory.js'
+import home from './components/home.js'
+import {login} from './components/login.js'
+import {update} from './components/update.js'
+import {messages} from './components/messages.js'
+import {inventory} from './components/inventory.js'
 
 class App extends Component {
   render() {
