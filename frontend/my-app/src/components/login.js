@@ -1,6 +1,7 @@
 import React,{Component} from 'react'; 
 import './login.css';
 import air from "../assessts/air.svg"
+import fullhouse from "../assessts/fullhouse.svg"
 
 
 class login extends Component {
@@ -36,7 +37,8 @@ class login extends Component {
         return (
             <div id="login-body" style={{height:'100vh'}}>
                 <div id="login-div">
-                    <h3 style={{color:'#80CED7'}}><b>Welcome to Fullhouse</b></h3>
+                    {/* <h3 style={{color:'#80CED7'}}><b>Welcome to Fullhouse</b></h3> */}
+                    <img src={fullhouse} height='64px'></img>
                     <p className="text-danger">{this.state.error}</p>
                     <div id="user-pass">
                         <form action="/" onSubmit={this.checkLogin}>

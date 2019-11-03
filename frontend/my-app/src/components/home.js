@@ -9,9 +9,32 @@ class home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sidebar: true
+            sidebar: true,
+            shelters: null,
+            currShelter: null,
+            lookingForStuff: false, 
+            selectedCategory: null,
         };
     }
+
+    async componentDidMount() {
+        try {
+            let res = await fetch("/backend/shelters");
+            let json = await res.json();
+            if (!json["success"]){
+                console.error("Server Error!!!", json["error"]);
+                alert("An error occurrend fetching statistics: " + json["error"]);
+                return;
+            }
+    
+            this.setState({shelters: json["data"], currShelter: json["data"][0]});
+        } catch (e) {
+            console.error(e);
+            alert("An error occurrend fetching statistics");
+        }
+
+    }
+
     render() {
         return (
         <div class="d-flex " id='wrapper '>
@@ -53,52 +76,39 @@ class home extends Component {
                     <table class="table">
                     <thead>
                         <tr>
-                        <th scope="col">Item</th>
-                        <th scope="col">Tags</th>
-                        <th scope="col">Scarcity</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Capacity</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <td scope="row">T-shirts</td>
-                        <td>men, women, clothing, shirts</td>
-                        <td>55/100</td>
-                        </tr>
-                        <tr>
-                        <td scope="row">Canned Food</td>
-                        <td>food, canned</td>
-                        <td>52395/10000</td>
-                        </tr>
-                        <tr>
-                        <td scope="row">Socks</td>
-                        <td>men, women, clothing, socks</td>
-                        <td>55/100</td>
-                        </tr>
+                        {["Shoes", "Shirts", "Pants", "Baby"].map(category => (                   
+                            <tr>
+                                <td scope="row"><a href="#" onClick={e => {
+                                    e.preventDefault();
+                                    this.setState({selectedCategory: category, lookingForStuff: this.state.currShelter[category.toLowerCase()+"PercentOutOfMet"] < 1})
+                                }}>{category}</a></td>
+                                <td className={this.state.currShelter && this.state.currShelter[category.toLowerCase()+"PercentOutOfMet"] > 1 ? 'text-success' : this.state.currShelter && this.state.currShelter[category.toLowerCase()+"PercentOutOfMet"] > 0.5 ? 'text-warning' : 'text-danger'}>{this.state.currShelter && (this.state.currShelter[category.toLowerCase()+"PercentOutOfMet"] * 100).toFixed(2) + "%"}</td>
+                            </tr>
+                        ))}
                     </tbody>
                     </table>
                 </div>
                 <div class="rec-card col-lg-4">
-                    <div class="rec-title">Recommended Shelters</div>
-                    <div class="rec-card-item">
-                        <div class="rec-card-left">
-                            <h5>Shelter Alpha</h5>
-                            <p>~25 miles | 15,000+ surplus</p>
-                        </div>
-                        <div class="rec-card-right"><a href="/messages"><img src={message}></img></a></div>
-                    </div>
-                    <div class="rec-card-item">
-                        <div class="rec-card-left">
-                            <h5>Shelter Alpha</h5>
-                            <p>~25 miles | 15,000+ surplus</p>
-                        </div>
-                        <div class="rec-card-right"><a href="/messages"><img src={message}></img></a></div>
-                    </div>                    <div class="rec-card-item">
-                        <div class="rec-card-left">
-                            <h5>Shelter Alpha</h5>
-                            <p>~25 miles | 15,000+ surplus</p>
-                        </div>
-                        <div class="rec-card-right"><a href="/messages"><img src={message}></img></a></div>
-                    </div>
+                    <div class="rec-title">Recommended Shelters To Contact</div>
+                    {this.state.shelters && this.state.selectedCategory && this.state.shelters.map(shelter => {
+                        if((this.state.lookingForStuff && !shelter[this.state.selectedCategory.toLowerCase()+"MetThreshold"]) || (!this.state.lookingForStuff && shelter[this.state.selectedCategory.toLowerCase()+"MetThreshold"]))
+                            return null;
+                        return (
+                            <div class="rec-card-item">
+                                <div class="rec-card-left">
+                                    <h5>{shelter.name}</h5>
+                                    <p>{this.state.lookingForStuff ? "Has excess inventory": "Looking for more inventory"} <br/> <span className={(shelter[this.state.selectedCategory.toLowerCase()+"PercentOutOfMet"]) > 1 ? 'text-success' : (shelter[this.state.selectedCategory.toLowerCase()+"PercentOutOfMet"]) > 0.5 ? 'text-warning' : 'text-danger'}>{((shelter[this.state.selectedCategory.toLowerCase()+"PercentOutOfMet"]) * 100).toFixed(2) + "% " + this.state.selectedCategory + " Capacity"}</span></p>
+                                </div>
+                                <div class="rec-card-right"><a href="/messages"><img src={message} style={{width: 24, color: "blue"}}></img></a></div>
+                            </div>
+                        )
+                    })}
+
                 </div>
                 </div>
             </div>

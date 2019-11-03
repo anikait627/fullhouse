@@ -59,6 +59,7 @@ cronRouter.get('/refreshPercentages', (req, res) => {
                 for (let key in counts) {
                     percentages[key+"Percent"] = counts[key] / totalCount;
                     percentages[key+"Threshold"] = thresholds[i][key];
+                    percentages[key+"PercentOutOfMet"] = (counts[key] / totalCount) / thresholds[i][key];
                     percentages[key+"MetThreshold"] = (counts[key] / totalCount) >= thresholds[i][key];
                 }
 
