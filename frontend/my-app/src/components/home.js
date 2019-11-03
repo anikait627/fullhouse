@@ -33,7 +33,7 @@ class home extends Component {
                         <a class="nav-link" href="#">Settings</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="/inventory" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Profile
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -48,15 +48,14 @@ class home extends Component {
 
                 <div class="container-fluid page-content-div">
                 <h1 class="mt-4">Dashboard</h1>
-                <p class="blurb">The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
+                <p class="blurb"></p>
                 <div class="table-card col-lg-7">
                     <table class="table">
                     <thead>
                         <tr>
                         <th scope="col">Item</th>
                         <th scope="col">Tags</th>
-                        <th scope="col">Stock/Demand</th>
-                        <th scope="col">Situation</th>
+                        <th scope="col">Scarcity</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,37 +63,16 @@ class home extends Component {
                         <td scope="row">T-shirts</td>
                         <td>men, women, clothing, shirts</td>
                         <td>55/100</td>
-                        <td>-45</td>
                         </tr>
                         <tr>
                         <td scope="row">Canned Food</td>
                         <td>food, canned</td>
                         <td>52395/10000</td>
-                        <td>+5000</td>
                         </tr>
                         <tr>
                         <td scope="row">Socks</td>
                         <td>men, women, clothing, socks</td>
                         <td>55/100</td>
-                        <td>-45</td>
-                        </tr>
-                        <tr>
-                        <td scope="row">T-shirts</td>
-                        <td>men, women, clothing, shirts</td>
-                        <td>55/100</td>
-                        <td>-45</td>
-                        </tr>
-                        <tr>
-                        <td scope="row">Canned Food</td>
-                        <td>food, canned</td>
-                        <td>52395/10000</td>
-                        <td>+5000</td>
-                        </tr>
-                        <tr>
-                        <td scope="row">Socks</td>
-                        <td>men, women, clothing, socks</td>
-                        <td>55/100</td>
-                        <td>-45</td>
                         </tr>
                     </tbody>
                     </table>
