@@ -108,7 +108,7 @@ class home extends Component {
                                     <h5>{shelter.name}</h5>
                                     <p>{this.state.lookingForStuff ? "Has excess inventory": "Looking for more inventory"} <br/> <span className={(shelter[this.state.selectedCategory.toLowerCase()+"PercentOutOfMet"]) > 1 ? 'text-success' : (shelter[this.state.selectedCategory.toLowerCase()+"PercentOutOfMet"]) > 0.5 ? 'text-warning' : 'text-danger'}>{((shelter[this.state.selectedCategory.toLowerCase()+"PercentOutOfMet"]) * 100).toFixed(2) + "% " + this.state.selectedCategory + " Capacity"}</span></p>
                                 </div>
-                                <div class="rec-card-right"><a href="/messages"><img src={message} style={{width: 24, color: "blue"}}></img></a></div>
+                                <div class="rec-card-right"><a href="/messages"><img src={message} style={{width: 30, color: "blue"}}></img></a></div>
                             </div>
                         )
                     })}
