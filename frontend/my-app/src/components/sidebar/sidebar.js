@@ -1,4 +1,7 @@
 import React, {Component} from 'react'; 
+import message from "./message.svg"
+import dashboard from "./dashboard.svg"
+import store from "./store.svg"
 
 class Sidebar extends Component {
     render() {
@@ -6,12 +9,12 @@ class Sidebar extends Component {
                 <div class={"bg-light border-right " + (this.props.sidebar === true ? "toggled" : "")} id="sidebar-wrapper">
                     <div class="sidebar-heading">Fullhouse</div>
                     <div class="list-group list-group-flush">
-                        <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-                        <a href="#" class="list-group-item list-group-item-action bg-light">Messages</a>
-                        <a href="#" class="list-group-item list-group-item-action bg-light">Inventory</a>
+                        <a href="/" class="list-group-item list-group-item-action bg-light"><img src={dashboard} class="menu-icon"></img>Dashboard</a>
+                        <a href="/messages" class="list-group-item list-group-item-action bg-light"><img src={message} class="menu-icon"></img>Messages</a>
+                        <a href="/inventory" class="list-group-item list-group-item-action bg-light"><img src={store} class="menu-icon"></img>Inventory</a>
                     </div>
                     <div class="list-group list-group-flush">
-                        <button id="update-button">Update Inventory</button>
+                        <a class="add-link" href="/update"><button id="update-button" onClick="window.location.href='/update'">+ Add Item</button></a>
                     </div>
                 </div>
         );

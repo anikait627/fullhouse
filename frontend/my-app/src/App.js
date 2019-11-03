@@ -9,9 +9,9 @@ import {
 import './App.css';
 import home from './components/home.js'
 import login from './components/login.js'
-import {update} from './components/update.js'
+import update from './components/update.js'
 import {messages} from './components/messages.js'
-import {inventory} from './components/inventory.js'
+import inventory from './components/inventory.js'
 
 class App extends Component {
   render() {
