@@ -1,0 +1,39 @@
+#login-div{
+    background-color: white;
+    width: 400px ;
+    padding: 50px;
+    margin: 100px auto;
+}
+body{
+    /* background-color: #80CED7; */
+}
+#login-button{
+    background-color: #80CED7;
+    border-radius: 12px;
+    color: white;
+    border: white;
+    font-size: 20px;
+    width: 200px;
+}
+#user-pass{
+    padding: 5px;
+    font-family: Sans-serif;
+}
+#myUsername{
+    border: 1px solid #80CED7;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: 275px;
+    height: 40px;
+}
+#myPwd{
+    border: 1px solid #80CED7;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    height: 40px;
+    width: 275px;
+}
+#login-body{
+    display: flex;
+    justify-content: center;
+}
