@@ -24,4 +24,4 @@ jobs:
       uses: azure/webapps-deploy@v1
       with:
         app-name: fullhouse-app
-        publish-profile: ${{ secrets.azureWebAppPublishProfile }}
+        publish-profile: ${{ secrets.AZURE_CREDENTIALS }}
