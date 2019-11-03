@@ -7,7 +7,7 @@ exports.isAuthorized = (req, res, next) => {
         return res.status(401).send({success: false, error: "Not Authorized"});
     
     req.user = authObj;
-    return next(req, res);
+    return next();
 }
 
 
@@ -20,5 +20,5 @@ exports.isAuthorizedRedirect = (req, res, next) => {
         return res.redirect("/login");
     
     req.user = authObj;
-    return next(req, res);
+    return next();
 }
