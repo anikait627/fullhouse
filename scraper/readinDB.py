@@ -21,9 +21,8 @@ readlines = [json.loads(i) for i in readlines]
 
 for d in readlines:
     d["shelterID"] = random.randint(1,4)
-    #print(d)
+    print(d)
 
-items.insert_many(readlines)
 
 
 
