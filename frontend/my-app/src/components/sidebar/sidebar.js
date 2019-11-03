@@ -10,9 +10,9 @@ class Sidebar extends Component {
                 <div class={"bg-light border-right " + (this.props.sidebar === true ? "toggled" : "")} id="sidebar-wrapper">
                     <div class="sidebar-heading"><img src={fullhouse} height="36px"></img></div>
                     <div class="list-group list-group-flush">
-                        <a href="/" class="list-group-item list-group-item-action bg-light"><img src={dashboard} class="menu-icon"></img>Dashboard</a>
-                        <a href="/messages" class="list-group-item list-group-item-action bg-light"><img src={message} class="menu-icon"></img>Messages</a>
-                        <a href="/inventory" class="list-group-item list-group-item-action bg-light"><img src={store} class="menu-icon"></img>Inventory</a>
+                        <a href="/" class={"list-group-item list-group-item-action bg-light" + (this.props.page == "dashboard" ? " active" : "")}><img src={dashboard} class="menu-icon"></img>Dashboard</a>
+                        <a href="/messages" class={"list-group-item list-group-item-action bg-light" + (this.props.page == "messages" ? " active" : "")}><img src={message} class="menu-icon"></img>Messages</a>
+                        <a href="/inventory" class={"list-group-item list-group-item-action bg-light" + (this.props.page == "inventory" ? " active" : "")}><img src={store} class="menu-icon"></img>Inventory</a>
                     </div>
                     <div class="list-group list-group-flush">
                         <a class="add-link" href="/update"><button id="update-button" onClick="window.location.href='/update'">+ Add Item</button></a>
