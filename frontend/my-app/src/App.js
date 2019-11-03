@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 import './App.css';
-import {home} from './components/home.js'
+import home from './components/home.js'
 import login from './components/login.js'
 import {update} from './components/update.js'
 import {messages} from './components/messages.js'
