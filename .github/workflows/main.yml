@@ -1,4 +1,4 @@
-name: CI
+name: Deploy
 
 on: [push]
 
@@ -19,6 +19,7 @@ jobs:
         npm install
         cd frontend/my-app && npm install && cd ../../
         npm run build
+        cd frontend/my-app && rm -rf node_modules/ && cd ../../
         
     - name: Run Azure webapp deploy using publish profile
       uses: azure/webapps-deploy@v1
