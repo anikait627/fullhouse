@@ -5,7 +5,7 @@ const itemsdB = require("../db/items");
 // hardcoded good thresholds
 let thresholds = {
     1: {
-        shoes: 0.25,
+        shoes: 0.15,
         shirts: 0.25,
         pants: 0.25,
         baby: 0.25
@@ -18,7 +18,7 @@ let thresholds = {
     },
     3: {
         shoes: 0.30,
-        shirts: 0.50,
+        shirts: 0.05,
         pants: 0.1,
         baby: 0.1
     },
