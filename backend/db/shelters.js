@@ -1,50 +1,50 @@
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb+srv://admin:1234@testcluster-ps7os.azure.mongodb.net/test?retryWrites=true&w=majority';
+const client = new MongoClient(uri, { useNewUrlParser: true });
 
 function setup(){
     return new Promise((resolve, reject) => {
-        const client = new MongoClient(url, { useNewUrlParser: true , useUnifiedTopology: true});
-        
+        const db = client.db("fullhouse");
+        const client = new MongoClient(uri, { useNewUrlParser: true });
+    
         client.connect(err => {
             if(err) {
-                console.error(err);
                 return reject(err);
             }
-            const db = client.db("fullhouse");
             return resolve(db);
         })
     })
 }
 
-module.exports.fetchItem = query => {
+module.exports.fetchShelter(query => {
     return setup().then(db => {
         return new Promise((res, rej) => {
-            db.collection("items").find(query).toArray((err, docs) => {
+            db.collection("shelters").find(query).toArray((err, docs) => {
                 if (err) return rej(err);
                 return res(docs);
             })
         })
     })
-}
+})
 
-module.exports.addItemBatch = listOfItems => {
+module.exports.addSheltersBatch(listOfItems => {
     return setup().then(db => {
         return new Promise((res, rej) => {
-            db.collection("items").insertMany(listOfItems, (err, result) => {
+            db.collection("shelters").insertMany(listOfItems, (err, result) => {
                 if (err) return rej(err);
                 return res(result);
             })
         })
     })
-}
+})
 
-module.exports.updateItem = (query, update) => {
+module.exports.updateShelters((query, update) => {
     return setup().then(db => {
         return new Promise((res, rej) => {
-            db.collection("items").updateOne(query, {$set: update}, (err, result) => {
+            db.collection("shelters").updateOne(query, {$set: update}, (err, result) => {
                 if (err) return rej(err);
                 return res(result);
             })
         })
     })
-}
+})

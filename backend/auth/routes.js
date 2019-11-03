@@ -1,7 +1,9 @@
 const authRouter = require("express").Router();
 const bodyParser = require('body-parser');
 
-authRouter.use(bodyParser.urlencoded());
+authRouter.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 authRouter.post("/login", (req, res) => {
     // pls never do this kids
