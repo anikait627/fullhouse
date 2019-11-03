@@ -11,11 +11,14 @@ class inventory extends Component {
         super(props);
         this.state = {
             items: [], 
-            sidebar: true
+            sidebar: true,
         };
     }
     componentDidMount() {
-        fetch("/backend/items?shelterID=1&tags=Shoes").then(res => res.json()).then(json => {this.setState({items: json.data})}
+        const urlParams = new URLSearchParams(window.location.search);
+        var tagsFilter = urlParams.get('tags');
+
+        fetch("/backend/items?shelterID=1&tags="+(tagsFilter || "")).then(res => res.json()).then(json => {this.setState({items: json.data})}
         )
     }
     render() {
@@ -54,13 +57,16 @@ class inventory extends Component {
 
                 <div class="container-fluid page-content-div">
                 <h1 class="mt-4">Inventory</h1>
-                <p class="blurb">The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
+                <p class="blurb">View items in your inventory and filter by tags.</p>
                 <div class="table-card col-lg-10">
                     <table class="table">
                     <thead>
                         <tr>
                         <th scope="col">Item</th>
-                        <th scope="col">Tags</th>
+                        <th scope="col" onClick={e => {
+                            let newTagFilter = prompt("Filter items by tags:");
+                            window.location = "/inventory?tags="+newTagFilter;
+                        }}>Tags</th>
                         <th scope="col">Count</th>
                         </tr>
                     </thead>

@@ -18,6 +18,10 @@ class home extends Component {
     }
 
     async componentDidMount() {
+        const urlParams = new URLSearchParams(window.location.search);
+        var shelterID = urlParams.get('shelterID');
+        if(shelterID) shelterID = parseInt(shelterID);
+
         try {
             let res = await fetch("/backend/shelters");
             let json = await res.json();
@@ -27,7 +31,7 @@ class home extends Component {
                 return;
             }
     
-            this.setState({shelters: json["data"], currShelter: json["data"][0]});
+            this.setState({shelters: json["data"], currShelter: json["data"][shelterID || 0]});
         } catch (e) {
             console.error(e);
             alert("An error occurrend fetching statistics");
