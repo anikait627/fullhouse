@@ -45,11 +45,19 @@ cronRouter.get('/refreshPercentages', (req, res) => {
                     baby: 0
                 }
 
+                let allCounts = {}
+
                 for (let doc of docs) {
                     for (let key in counts) {
                         doc["tags"] = doc["tags"].map(item => item.toLowerCase());
                         if (doc["tags"].includes(key))
                             counts[key] += 1;
+                        for (tag of doc["tags"]) {
+                            if(allCounts[tag])
+                                allCounts[tag] += 1
+                            else
+                                allCounts[tag] = 1
+                        }
                     }
                 }
                 console.log(counts)
@@ -64,6 +72,8 @@ cronRouter.get('/refreshPercentages', (req, res) => {
                 }
 
                 console.log(percentages);
+                percentages["tagCounts"] = allCounts;
+                percentages["totalItemCount"] = totalCount;
 
                 return sheltersdB.updateShelters({id: i}, percentages);
             })

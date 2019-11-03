@@ -82,7 +82,7 @@ class home extends Component {
                     </thead>
                     <tbody>
                         {["Shoes", "Shirts", "Pants", "Baby"].map(category => (                   
-                            <tr>
+                            <tr className={this.state.selectedCategory == category ? "bg-light" : ""}>
                                 <td scope="row"><a href="#" onClick={e => {
                                     e.preventDefault();
                                     this.setState({selectedCategory: category, lookingForStuff: this.state.currShelter[category.toLowerCase()+"PercentOutOfMet"] < 1})
