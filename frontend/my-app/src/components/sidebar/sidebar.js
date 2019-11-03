@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class Sidebar extends Component {
     render() {
         return (
-                <div class="bg-light border-right" id="sidebar-wrapper">
+                <div class={"bg-light border-right " + (this.props.sidebar === true ? "toggled" : "")} id="sidebar-wrapper">
                     <div class="sidebar-heading">Fullhouse</div>
                     <div class="list-group list-group-flush">
                         <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>

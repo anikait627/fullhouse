@@ -1,6 +1,9 @@
 import React,{Component} from 'react'; 
 import './pages.css';
 import Sidebar from './sidebar/sidebar.js'
+import menuIcon from "../assessts/menu.svg"
+import person from "../assessts/person.svg"
+import message from "../assessts/message.svg"
 
 class home extends Component {
     constructor(props) {
@@ -11,14 +14,14 @@ class home extends Component {
     }
     render() {
         return (
-        <div class={"d-flex " + (this.state.sidebar === true ? "" : "toggled")} id='wrapper '>
-            <Sidebar/>
+        <div class="d-flex " id='wrapper '>
+            <Sidebar sidebar={this.state.sidebar}/>
             <div id="page-content-wrapper">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                <button class="btn btn-primary" id="menu-toggle" onClick={() => this.setState({sidebar: !this.state.sidebar})}>Toggle Menu</button>
+                <button class="blank-button" id="menu-toggle" onClick={() => this.setState({sidebar: !this.state.sidebar})}><img src={menuIcon}></img></button>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler blank-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <img src={person}></img>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -34,9 +37,9 @@ class home extends Component {
                         Profile
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Edit Profile</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="/login">Logout</a>
                         </div>
                     </li>
                     </ul>
@@ -44,8 +47,8 @@ class home extends Component {
                 </nav>
 
                 <div class="container-fluid page-content-div">
-                <h1 class="mt-4">Inventory</h1>
-                <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
+                <h1 class="mt-4">Dashboard</h1>
+                <p class="blurb">The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
                 <div class="table-card col-lg-7">
                     <table class="table">
                     <thead>
@@ -75,14 +78,49 @@ class home extends Component {
                         <td>55/100</td>
                         <td>-45</td>
                         </tr>
+                        <tr>
+                        <td scope="row">T-shirts</td>
+                        <td>men, women, clothing, shirts</td>
+                        <td>55/100</td>
+                        <td>-45</td>
+                        </tr>
+                        <tr>
+                        <td scope="row">Canned Food</td>
+                        <td>food, canned</td>
+                        <td>52395/10000</td>
+                        <td>+5000</td>
+                        </tr>
+                        <tr>
+                        <td scope="row">Socks</td>
+                        <td>men, women, clothing, socks</td>
+                        <td>55/100</td>
+                        <td>-45</td>
+                        </tr>
                     </tbody>
                     </table>
                 </div>
                 <div class="rec-card col-lg-4">
                     <div class="rec-title">Recommended Shelters</div>
-                    <div class="rec-card-item">Item</div>
-                    <div class="rec-card-item">Item</div>
-                    <div class="rec-card-item">Item</div>
+                    <div class="rec-card-item">
+                        <div class="rec-card-left">
+                            <h5>Shelter Alpha</h5>
+                            <p>~25 miles | 15,000+ surplus</p>
+                        </div>
+                        <div class="rec-card-right"><a href="/messages"><img src={message}></img></a></div>
+                    </div>
+                    <div class="rec-card-item">
+                        <div class="rec-card-left">
+                            <h5>Shelter Alpha</h5>
+                            <p>~25 miles | 15,000+ surplus</p>
+                        </div>
+                        <div class="rec-card-right"><a href="/messages"><img src={message}></img></a></div>
+                    </div>                    <div class="rec-card-item">
+                        <div class="rec-card-left">
+                            <h5>Shelter Alpha</h5>
+                            <p>~25 miles | 15,000+ surplus</p>
+                        </div>
+                        <div class="rec-card-right"><a href="/messages"><img src={message}></img></a></div>
+                    </div>
                 </div>
                 </div>
             </div>
