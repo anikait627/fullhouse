@@ -51,10 +51,9 @@
       color: rgb(78, 78, 78);
   }
 
-  
-  #sidebar-wrapper .list-group-item:hover {
-    background-color: #80CED7;
-}
+  .active.list-group-item {
+    color: #80CED7!important;
+  }
   
   #page-content-wrapper {
     min-width: 100vw;
@@ -135,6 +134,10 @@
       padding: 5px 20px 0px 20px;
   }
 
+  .table tbody tr:hover {
+    background-color: rgb(239, 247, 247);
+  }
+
   .table-card thead th {
       border-top: 0px;
       color: rgb(112, 112, 112);
@@ -158,23 +161,30 @@
 
   .rec-card-item {
       padding: 0.75rem;
+      margin-top: 20px;
   }
 
   .rec-card-left {
       display: inline-block;
-      width: calc(100%-60px);
+      width: calc(100%-100px);
       margin-right: 30px;
       padding-left: 20px;
+  }
+
+  .topnav {
+    background-color: #80CED7;
   }
 
   .rec-card-right {
       height: 100%;
       display: inline-block;
+      vertical-align: top;
+      padding-top: 10px;
   }
 
   .rec-card-right img {
-    width: 40px; 
-    vertical-align: center;
+    width: 30px; 
+    opacity: 0.6;
   }
 
   .form-group label {
@@ -184,8 +194,13 @@
   }
 
   .menu-icon {
-      width: 2rem;
+      max-width: 24px;
       margin-right: 15px;
+      filter: grayscale(100%);
+  }
+
+  .active .menu-icon {
+    filter: none;
   }
   
   @media (min-width: 768px) {
@@ -202,4 +217,13 @@
   #update-row{
       display: flex;
       justify-content:center ;
+  }
+
+  .message-wrapper {
+    background-color: white!important;
+
+  }
+
+  .chat-bg {
+    background-color: white!important;
   }
