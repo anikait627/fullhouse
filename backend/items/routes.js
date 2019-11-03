@@ -2,9 +2,7 @@ const bodyParser = require('body-parser');
 const itemRouter = require("express").Router();
 const itemsdB = require("../db/items");
 
-itemRouter.use(bodyParser.urlencoded({
-    extended: true
-}));
+itemRouter.use(bodyParser.json());
 
 itemRouter.get('/', (req, res) => {
     let shelterID = req.query.shelterID;

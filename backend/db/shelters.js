@@ -1,22 +1,21 @@
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb+srv://admin:1234@testcluster-ps7os.azure.mongodb.net/test?retryWrites=true&w=majority';
-const client = new MongoClient(uri, { useNewUrlParser: true });
 
 function setup(){
     return new Promise((resolve, reject) => {
-        const db = client.db("fullhouse");
-        const client = new MongoClient(uri, { useNewUrlParser: true });
-    
+        const client = new MongoClient(url, { useNewUrlParser: true });
+        
         client.connect(err => {
             if(err) {
                 return reject(err);
             }
+            const db = client.db("fullhouse");
             return resolve(db);
         })
     })
 }
 
-module.exports.fetchShelter(query => {
+module.exports.fetchShelter = query => {
     return setup().then(db => {
         return new Promise((res, rej) => {
             db.collection("shelters").find(query).toArray((err, docs) => {
@@ -25,9 +24,9 @@ module.exports.fetchShelter(query => {
             })
         })
     })
-})
+}
 
-module.exports.addSheltersBatch(listOfItems => {
+module.exports.addSheltersBatch = listOfItems => {
     return setup().then(db => {
         return new Promise((res, rej) => {
             db.collection("shelters").insertMany(listOfItems, (err, result) => {
@@ -36,9 +35,9 @@ module.exports.addSheltersBatch(listOfItems => {
             })
         })
     })
-})
+}
 
-module.exports.updateShelters((query, update) => {
+module.exports.updateShelters = (query, update) => {
     return setup().then(db => {
         return new Promise((res, rej) => {
             db.collection("shelters").updateOne(query, {$set: update}, (err, result) => {
@@ -47,4 +46,4 @@ module.exports.updateShelters((query, update) => {
             })
         })
     })
-})
+}

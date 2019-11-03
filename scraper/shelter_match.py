@@ -30,13 +30,13 @@ def count_supply(arr):
     return totalshoes, totalshirts, totalpants, totalbaby
 
 
-def scarcity(shoes, shirts, pants, baby, totals):
+def scarcity(shoes, shirts, pants, baby, arr):
     """
     Takes in the ideal values for above,
     and array of dictionaries readlines
     """
 
-    totalshoes,totalshirts,totalpants,totalbaby = totals
+    totalshoes,totalshirts,totalpants,totalbaby = count_supply(arr)
 
     scarcity = {}
     surplus = {}
