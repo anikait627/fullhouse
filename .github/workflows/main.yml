@@ -17,6 +17,7 @@ jobs:
     - name: 'npm install and build'
       run: |
         npm install
+        cd frontend/my-app && npm install && cd ../../
         npm run build
         
     - name: Run Azure webapp deploy using publish profile
