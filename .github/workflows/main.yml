@@ -1,0 +1,26 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 'Checkout Github Action'
+    - uses: actions/checkout@v1
+      
+    - name: Setup Node 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    
+    - name: 'npm install and build'
+      run: |
+        npm install
+        npm run build
+        
+    - name: Run Azure webapp deploy using publish profile
+      uses: azure/webapps-deploy@v1
+      with:
+        app-name: fullhouse-app
+        publish-profile: ${{ secrets.azureWebAppPublishProfile }}
