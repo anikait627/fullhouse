@@ -1,8 +1,9 @@
 import pymongo
 from pprint import pprint
 import json
+import os
 import random
-client = pymongo.MongoClient("mongodb+srv://admin:1234@testcluster-ps7os.azure.mongodb.net/test")
+client = pymongo.MongoClient(os.getenv("MONGO_CONNECTION_STRING"))
 
 db = client.fullhouse
 
@@ -21,9 +22,12 @@ readlines = [json.loads(i) for i in readlines]
 
 for d in readlines:
     d["shelterID"] = random.randint(1,4)
-    print(d)
+    new_tags = set()
+    for item in d["tags"]:
+        item = item.replace("'", "").strip()
+        subtags = item.split(" ")
+        for s in subtags:
+            new_tags.add(s)
+    d["tags"] = list(new_tags)
 
-
-
-
-
+inserted = items.insert_many(readlines)

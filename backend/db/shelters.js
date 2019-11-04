@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb+srv://admin:1234@testcluster-ps7os.azure.mongodb.net/test?retryWrites=true&w=majority';
+const url = process.env.MONGO_CONNECTION_STRING;
 
 function setup(){
     return new Promise((resolve, reject) => {

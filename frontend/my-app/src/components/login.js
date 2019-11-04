@@ -73,8 +73,8 @@ class login extends Component {
                         </form>
                     </div>
                 </div>
-                <div id="picture">
-                    <img src={air} alt="pic-diagram" width="900px" height="100%" style={{objectFit:"cover",objectPosition:"left"}}></img>
+                <div id="picture hidden-sm">
+                    <img src={air} alt="pic-diagram" width="100%" height="100%" style={{objectFit:"cover",objectPosition:"left"}}></img>
                 </div>
             </div>
         );
