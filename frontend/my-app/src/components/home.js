@@ -87,7 +87,7 @@ class home extends Component {
                     <tbody>
                         {["Shoes", "Shirts", "Pants", "Baby"].map(category => (                   
                             <tr className={this.state.selectedCategory == category ? "bg-light" : ""}>
-                                <td scope="row"><a href="#" style={{color: "#333"}}onClick={e => {
+                                <td scope="row"><a style={{color: "#333"}}href="#" onClick={e => {
                                     e.preventDefault();
                                     this.setState({selectedCategory: category, lookingForStuff: this.state.currShelter[category.toLowerCase()+"PercentOutOfMet"] < 1})
                                 }}>{category}</a></td>
@@ -98,7 +98,7 @@ class home extends Component {
                     </table>
                 </div>
                 <div class="rec-card col-lg-4">
-                    <div class="rec-title">Recommended Shelters To Contact</div>
+                    <div class="rec-title"><b>Recommended Shelters To Contact</b></div>
                     {this.state.shelters && this.state.selectedCategory && this.state.shelters.map(shelter => {
                         if((this.state.lookingForStuff && !shelter[this.state.selectedCategory.toLowerCase()+"MetThreshold"]) || (!this.state.lookingForStuff && shelter[this.state.selectedCategory.toLowerCase()+"MetThreshold"]))
                             return null;
