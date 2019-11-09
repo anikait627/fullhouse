@@ -1,4 +1,4 @@
-# Full House
+# fullhouse
 [[Try it out]](http://fullhouse-app.azurewebsites.net/) [[Source Code]](https://github.com/anikait627/fullhouse) [[Devpost]](https://devpost.com/software/fullhouse) [[Slides]](presentation.pdf)
 
 Communal Inventory Management for Social Service Centers designed to reduce waste and give each community their specific needs.
